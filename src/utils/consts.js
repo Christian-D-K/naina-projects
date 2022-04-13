@@ -1,5 +1,5 @@
 export const TEXT_JP = {
-  TEST: 'and love ya!',
+  TEST: 'and love you!',
   SAVE_BUTTON_TEXT: '保存',
 };
 
