@@ -5,22 +5,30 @@ import { string, shape, func } from 'prop-types';
 import { Feather } from '@expo/vector-icons';
 
 export function CircleButton(props) {
-  const { style, name, onPress } = props;
+  const {
+    designStyle,
+    layoutStyle,
+    name,
+    onPress,
+  } = props;
+
   return (
-    <TouchableOpacity style={[styles.circleButton, style]} onPress={onPress}>
-      <Feather name={name} size={32} color={style.color} />
+    <TouchableOpacity style={[styles.circleButton, designStyle, layoutStyle]} onPress={onPress}>
+      <Feather name={name} size={32} color={designStyle.color} />
     </TouchableOpacity>
   );
 }
 
 CircleButton.propTypes = {
-  style: shape(),
+  designStyle: shape(),
+  layoutStyle: shape(),
   name: string.isRequired,
   onPress: func,
 };
 
 CircleButton.defaultProps = {
-  style: null,
+  designStyle: null,
+  layoutStyle: null,
   onPress: null,
 };
 
@@ -31,9 +39,6 @@ const styles = StyleSheet.create({
     borderRadius: 32,
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'absolute',
-    right: 1,
-    bottom: 1,
     // iOSのみ対応しているstyleプロパティ
     shadowOffset: { width: 2, height: 4 },
     shadowOpacity: 0.3,

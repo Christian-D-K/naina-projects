@@ -1,10 +1,10 @@
 // Flames
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
-  Text,
   Alert,
   StyleSheet,
+  ScrollView,
 } from 'react-native';
 
 // constants
@@ -14,6 +14,10 @@ import { COLORS } from '../utils/colors';
 // components
 import { Button } from '../components/Button';
 import { CircleButton } from '../components/CircleButton';
+import { Input } from '../components/Input';
+import { Title } from '../components/Title';
+import { RadioButton } from '../components/RadioButton';
+import { Card } from '../components/Card';
 
 const pushButton = () => {
   Alert.alert('OK!');
@@ -22,16 +26,58 @@ const pushButton = () => {
 const pushCircleButton = () => {
   Alert.alert('GOT IT!');
 };
+const radioOptions = [
+  {
+    title: 'ARU',
+    optionId: '0',
+  },
+  {
+    title: 'ALL',
+    optionId: '1',
+  },
+  {
+    title: 'NAI',
+    optionId: '2',
+  },
+];
 
 export default function ConfirmScreen() {
+  const [inputProductValue, setInputProductValue] = useState('');
+  const [inputDescriptionValue, setInputDescriptionValue] = useState('');
   return (
-    <View>
-      <Text>{`hi there! ${TEXT_JP.TEST} ;）`}</Text>
-      <Button onPress={pushButton} buttonText={TEXT_JP.SAVE_BUTTON_TEXT} />
+    <View style={styles.container}>
+      <ScrollView>
+        <Button onPress={pushButton} buttonText={TEXT_JP.SAVE_BUTTON_TEXT} />
+        <Title
+          title="品目"
+        />
+        <Input
+          inputValueSet={setInputProductValue}
+          inputValue={inputProductValue}
+        />
+        <Title
+          title="説明"
+        />
+        <Input
+          multiline
+          inputValueSet={setInputDescriptionValue}
+          inputValue={inputDescriptionValue}
+        />
+        <RadioButton
+          radioOptions={radioOptions}
+        />
+        <Card
+          cardTitle="醤油"
+          expiryDate="2020/01/01"
+          description="説明説明説明説明説明"
+          isProductHas
+        />
+      </ScrollView>
       <CircleButton
         name="edit-2"
         onPress={pushCircleButton}
-        style={styles.circleButtonWhite}
+        layoutStyle={styles.editCircle}
+        designStyle={styles.circleButtonWhite}
       />
     </View>
   );
@@ -40,7 +86,12 @@ export default function ConfirmScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.GRAY_D001,
+    backgroundColor: COLORS.GRAY_DL001,
+  },
+  editCircle: {
+    position: 'absolute',
+    right: 50,
+    bottom: 80,
   },
   circleButtonWhite: {
     backgroundColor: COLORS.WHITE_L001,
