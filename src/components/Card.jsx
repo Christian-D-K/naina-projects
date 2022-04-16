@@ -16,10 +16,10 @@ import { COLORS } from '../utils/colors';
 export function Card(props) {
   const {
     cardTitle,
-    expiryDate,
     description,
     isProductHas,
     isMainMode,
+    cardId,
   } = props;
   const [isProductHasState, setIsProductHasState] = useState(isProductHas);
 
@@ -33,16 +33,15 @@ export function Card(props) {
 
   const styles = StyleSheet.create({
     cardContainer: {
-      width: 176,
+      width: 164,
       height: 144,
       backgroundColor: isProductHasState ? COLORS.GRAY_M002 : COLORS.RED_D002,
-      marginHorizontal: 8,
       marginVertical: 8,
       borderRadius: 4,
     },
     visualArea: {
       height: 96,
-      width: 176,
+      width: 164,
       borderTopStartRadius: 4,
       borderTopEndRadius: 4,
     },
@@ -78,17 +77,14 @@ export function Card(props) {
       height: 24,
       borderRadius: 12,
     },
+    checkArea: {
+      width: 32,
+      height: 32,
+    },
     checkUnVisible: {
       margin: 8,
       width: 24,
       height: 24,
-    },
-    expiryDate: {
-      fontSize: 16,
-      marginTop: 8,
-      marginRight: 8,
-      color: COLORS.WHITE_L001,
-      fontWeight: 'bold',
     },
     description: {
       width: 140,
@@ -130,12 +126,15 @@ export function Card(props) {
             style={styles.cover}
           />
           {isMainMode ? <View style={styles.checkUnVisible} />
-            : <TouchableOpacity activeOpacity={0.5} style={styles.check} />}
-          <Text
-            style={styles.expiryDate}
-          >
-            {expiryDate}
-          </Text>
+            // eslint-disable-next-line react/jsx-wrap-multilines
+            : <TouchableOpacity
+                activeOpacity={0.5}
+                style={styles.checkArea}
+              >
+                <View
+                  style={styles.check}
+                />
+              </TouchableOpacity>}
         </View>
         <View
           style={styles.visualAreaBottom}
@@ -161,10 +160,10 @@ export function Card(props) {
 }
 Card.propYypes = {
   cardTitle: string.isRequired,
-  expiryDate: string.isRequired,
   description: string,
   isProductHas: bool.isRequired,
   isMainMode: bool,
+  cardId: string.isRequired,
 };
 
 Card.defaultProps = {

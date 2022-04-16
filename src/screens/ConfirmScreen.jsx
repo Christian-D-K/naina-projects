@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 // constants
-import { TEXT_JP } from '../utils/consts';
+import { TEXT_JP, RADIO_OPTIONS } from '../utils/consts';
 import { COLORS } from '../utils/colors';
 
 // components
@@ -26,20 +26,6 @@ const pushButton = () => {
 const pushCircleButton = () => {
   Alert.alert('GOT IT!');
 };
-const radioOptions = [
-  {
-    title: 'ARU',
-    optionId: '0',
-  },
-  {
-    title: 'ALL',
-    optionId: '1',
-  },
-  {
-    title: 'NAI',
-    optionId: '2',
-  },
-];
 
 export default function ConfirmScreen() {
   const [inputProductValue, setInputProductValue] = useState('');
@@ -64,7 +50,7 @@ export default function ConfirmScreen() {
           inputValue={inputDescriptionValue}
         />
         <RadioButton
-          radioOptions={radioOptions}
+          radioOptions={RADIO_OPTIONS}
         />
         <Card
           cardTitle="醤油"
@@ -86,7 +72,7 @@ export default function ConfirmScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.GRAY_DL001,
+    backgroundColor: COLORS.GRAY_L001,
   },
   editCircle: {
     position: 'absolute',

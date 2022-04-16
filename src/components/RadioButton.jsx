@@ -7,18 +7,18 @@ import {
   StyleSheet,
   Animated,
 } from 'react-native';
-import { arrayOf } from 'prop-types';
+import { arrayOf, string } from 'prop-types';
 import { FlatList } from 'react-native-gesture-handler';
 
 import { COLORS } from '../utils/colors';
 
 export function RadioButton(props) {
-  const { radioOptions } = props;
+  const { radioOptions, initialOptionId } = props;
   // Radio-options-size specifies automatic
   const containerWidth = 200;
   const optionWidth = containerWidth / radioOptions.length;
   // const radioOptionsLength = radioOptions.length;
-  const swithcRadioAnim = useRef(new Animated.Value(0)).current;
+  const swithcRadioAnim = useRef(new Animated.Value(Number(initialOptionId) * optionWidth)).current;
 
   const switchRadioState = (id) => {
     Animated.spring(swithcRadioAnim, {
@@ -111,4 +111,5 @@ export function RadioButton(props) {
 
 RadioButton.propTypes = {
   radioOptions: arrayOf.isRequired,
+  initialOptionId: string.isRequired,
 };
