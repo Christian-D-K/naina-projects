@@ -15,10 +15,17 @@ export const COLORS = {
   WHITE_L001: '#ffffff',
 
   // Red
+  RED_L001: '#EFDEDE',
   RED_D001: '#9E4040',
   RED_D002: '#9B5E5E',
   RED_D003: '#700303',
 
   // Green
-  GREEN_L001: '',
+  GREEN_L001: '#E0F7DE',
+  GREEN_D001: '#8BB78A',
+  GREEN_D002: '#5E855D',
+
+  // Blue
+  BLUE_L001: '#42A4FF',
+  BLUE_L002: '#EBF5F8',
 };

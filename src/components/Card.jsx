@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   View,
-  StyleSheet,
   TouchableOpacity,
   Text,
   Image,
@@ -9,8 +8,12 @@ import {
 import {
   string,
   bool,
+  func,
+  arrayOf,
 } from 'prop-types';
-// import { Ionicons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
+
+import { CardStyles as styles } from '../utils/styles';
 import { COLORS } from '../utils/colors';
 
 export function Card(props) {
@@ -20,9 +23,10 @@ export function Card(props) {
     isProductHas,
     isMainMode,
     cardId,
+    checkHandler,
+    checkCards,
   } = props;
   const [isProductHasState, setIsProductHasState] = useState(isProductHas);
-
   const onPress = () => {
     if (isMainMode) {
       setIsProductHasState(!isProductHasState);
@@ -31,81 +35,15 @@ export function Card(props) {
     }
   };
 
-  const styles = StyleSheet.create({
-    cardContainer: {
-      width: 164,
-      height: 144,
-      backgroundColor: isProductHasState ? COLORS.GRAY_M002 : COLORS.RED_D002,
-      marginVertical: 8,
-      borderRadius: 4,
-    },
-    visualArea: {
-      height: 96,
-      width: 164,
-      borderTopStartRadius: 4,
-      borderTopEndRadius: 4,
-    },
-    titleArea: {
-      height: 48,
-      backgroundColor: isProductHasState ? COLORS.GRAY_D002 : COLORS.RED_D001,
-      borderBottomEndRadius: 4,
-      borderBottomStartRadius: 4,
-    },
-    visualAreaTop: {
-      height: 40,
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-    },
-    visualAreaBottom: {
-      height: 56,
-    },
-    title: {
-      marginHorizontal: 8,
-      marginTop: 14,
-      fontSize: 16,
-      color: COLORS.WHITE_L001,
-      fontWeight: 'bold',
-    },
-    check: {
-      backgroundColor: COLORS.WHITE_L001,
-      opacity: 0.5,
-      borderWidth: 2,
-      borderStyle: 'dotted',
-      borderColor: COLORS.GRAY_D001,
-      margin: 8,
-      width: 24,
-      height: 24,
-      borderRadius: 12,
-    },
-    checkArea: {
-      width: 32,
-      height: 32,
-    },
-    checkUnVisible: {
-      margin: 8,
-      width: 24,
-      height: 24,
-    },
-    description: {
-      width: 140,
-      marginLeft: 8,
-      fontSize: 14,
-      fontWeight: '500',
-      color: COLORS.WHITE_L001,
-    },
-    cover: {
-      position: 'absolute',
-      backgroundColor: isProductHasState ? COLORS.BLACK_D001 : COLORS.RED_D003,
-      opacity: 0.4,
-    },
-    image: {
-      position: 'absolute',
-    },
-  });
-
   return (
     <TouchableOpacity
-      style={styles.cardContainer}
+      style={
+        [
+          styles.cardContainer,
+          { backgroundColor: isProductHasState ? COLORS.GRAY_M002 : COLORS.RED_D002 },
+          !isMainMode ? styles.editCardContainer : null,
+        ]
+      }
       onPress={onPress}
     >
       <View
@@ -120,20 +58,30 @@ export function Card(props) {
             style={[styles.image, styles.visualArea]}
           />
           <View
-            style={[styles.cover, styles.visualArea]}
-          />
-          <View
-            style={styles.cover}
+            style={
+              [
+                styles.cover,
+                styles.visualArea,
+                { backgroundColor: isProductHasState ? COLORS.BLACK_D001 : COLORS.RED_D003 },
+              ]
+            }
           />
           {isMainMode ? <View style={styles.checkUnVisible} />
             // eslint-disable-next-line react/jsx-wrap-multilines
             : <TouchableOpacity
-                activeOpacity={0.5}
+                activeOpacity={1}
                 style={styles.checkArea}
+                onPress={() => checkHandler(cardId)}
               >
                 <View
-                  style={styles.check}
-                />
+                  style={[styles.check, checkCards.includes(cardId) ? styles.checked : styles.unChecked]}
+                >
+                  <Feather
+                    name="check"
+                    size={20}
+                    color={COLORS.WHITE_L001}
+                  />
+                </View>
               </TouchableOpacity>}
         </View>
         <View
@@ -147,7 +95,12 @@ export function Card(props) {
         </View>
       </View>
       <View
-        style={styles.titleArea}
+        style={
+          [
+            styles.titleArea,
+            { backgroundColor: isProductHasState ? COLORS.GRAY_D002 : COLORS.RED_D001 },
+          ]
+        }
       >
         <Text
           style={styles.title}
@@ -158,15 +111,18 @@ export function Card(props) {
     </TouchableOpacity>
   );
 }
-Card.propYypes = {
+Card.propTypes = {
   cardTitle: string.isRequired,
   description: string,
   isProductHas: bool.isRequired,
   isMainMode: bool,
+  checkHandler: func,
   cardId: string.isRequired,
+  checkCards: arrayOf.isRequired,
 };
 
 Card.defaultProps = {
   description: null,
   isMainMode: true,
+  checkHandler: null,
 };
