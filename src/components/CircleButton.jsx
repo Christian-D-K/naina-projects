@@ -13,7 +13,11 @@ export function CircleButton(props) {
   } = props;
 
   return (
-    <TouchableOpacity style={[styles.circleButton, designStyle, layoutStyle]} onPress={onPress}>
+    <TouchableOpacity
+      style={[styles.circleButton, designStyle, layoutStyle]}
+      onPress={onPress}
+      activeOpacity={1}
+    >
       <Feather name={name} size={32} color={designStyle.color} />
     </TouchableOpacity>
   );
