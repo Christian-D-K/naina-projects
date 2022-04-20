@@ -25,6 +25,7 @@ export function Card(props) {
     cardId,
     checkHandler,
     checkCards,
+    background,
   } = props;
   const [isProductHasState, setIsProductHasState] = useState(isProductHas);
   const onPress = () => {
@@ -54,7 +55,7 @@ export function Card(props) {
         >
           <Image
             // eslint-disable-next-line global-require
-            source={require('../media/sample.jpg')}
+            source={{ uri: '' }}
             style={[styles.image, styles.visualArea]}
           />
           <View
@@ -119,6 +120,7 @@ Card.propTypes = {
   checkHandler: func,
   cardId: string.isRequired,
   checkCards: arrayOf.isRequired,
+  background: string.isRequired,
 };
 
 Card.defaultProps = {

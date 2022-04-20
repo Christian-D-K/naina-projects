@@ -3,9 +3,10 @@ import { COLORS } from './colors';
 
 export const CardStyles = StyleSheet.create({
   cardContainer: {
-    width: 164,
+    width: 162,
     height: 144,
-    marginVertical: 8,
+    marginVertical: 4,
+    marginHorizontal: 4,
     borderRadius: 4,
   },
   editCardContainer: {
@@ -15,7 +16,7 @@ export const CardStyles = StyleSheet.create({
   },
   visualArea: {
     height: 96,
-    width: 164,
+    width: 162,
     borderTopStartRadius: 4,
     borderTopEndRadius: 4,
   },
