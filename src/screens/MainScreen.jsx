@@ -5,10 +5,12 @@ import {
   StyleSheet,
   Animated,
 } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 
 // constants
 import { RADIO_OPTIONS } from '../utils/consts';
 import { COLORS } from '../utils/colors';
+import { cardsData } from '../../sampleData';
 
 // components
 import { CircleButton } from '../components/CircleButton';
@@ -86,6 +88,18 @@ export default function MainScreen() {
     console.log(`delete ${checkCards}`);
   };
 
+  const renderCards = ({ item }) => (
+    <Card
+      cardTitle={item.cardTitle}
+      cardId={item.cardId}
+      isProductHas={item.isProductHas}
+      description={item.option.description}
+      isMainMode={isMainMode}
+      checkCards={checkCards}
+      checkHandler={onCheck}
+    />
+  );
+
   return (
     <View
       style={
@@ -109,23 +123,12 @@ export default function MainScreen() {
         <View
           style={styles.cardArea}
         >
-          <Card
-            cardTitle="醤油"
-            description="説明説明説明説明説明"
-            isProductHas
-            cardId="aaaa"
-            isMainMode={isMainMode}
-            checkCards={checkCards}
-            checkHandler={onCheck}
-          />
-          <Card
-            cardTitle="砂糖"
-            description="シュガー"
-            isProductHas
-            cardId="bbbb"
-            isMainMode={isMainMode}
-            checkCards={checkCards}
-            checkHandler={onCheck}
+          <FlatList
+            data={cardsData}
+            renderItem={renderCards}
+            keyExtractor={(item) => item.cardId}
+            contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
+            numColumns={2}
           />
         </View>
       </ScrollView>
@@ -183,10 +186,7 @@ const styles = StyleSheet.create({
   },
   cardArea: {
     flex: 1,
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    flexWrap: 'wrap',
+    alignItems: 'center',
   },
   editCircle: {
     position: 'absolute',
