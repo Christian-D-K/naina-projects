@@ -8,7 +8,7 @@ export const TEXT_EN = {
   SAVE_BUTTON_TEXT: 'SAVE',
 };
 
-export const RADIO_OPTIONS = [
+export const MAIN_RADIO_OPTIONS = [
   {
     title: 'ARU',
     optionId: '0',
@@ -20,5 +20,16 @@ export const RADIO_OPTIONS = [
   {
     title: 'NAI',
     optionId: '2',
+  },
+];
+
+export const EDIT_RADIO_OPTIONS = [
+  {
+    title: 'ARU',
+    optionId: '0',
+  },
+  {
+    title: 'NAI',
+    optionId: '1',
   },
 ];

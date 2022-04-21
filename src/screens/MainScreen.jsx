@@ -8,7 +8,7 @@ import {
 import { FlatList } from 'react-native-gesture-handler';
 
 // constants
-import { RADIO_OPTIONS } from '../utils/consts';
+import { MAIN_RADIO_OPTIONS } from '../utils/consts';
 import { COLORS } from '../utils/colors';
 import { cardsData } from '../../sampleData';
 
@@ -116,7 +116,7 @@ export default function MainScreen() {
           style={styles.radioArea}
         >
           <RadioButton
-            radioOptions={RADIO_OPTIONS}
+            radioOptions={MAIN_RADIO_OPTIONS}
             initialOptionId="1"
           />
         </View>

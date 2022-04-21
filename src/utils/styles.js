@@ -62,8 +62,8 @@ export const CardStyles = StyleSheet.create({
     opacity: 0.9,
   },
   checkArea: {
-    width: 32,
-    height: 32,
+    width: 40,
+    height: 40,
   },
   checkUnVisible: {
     margin: 8,

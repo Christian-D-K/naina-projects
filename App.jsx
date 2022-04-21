@@ -5,6 +5,7 @@ import ConfirmScreen from './src/screens/ConfirmScreen';
 import MainScreen from './src/screens/MainScreen';
 
 import { COLORS } from './src/utils/colors';
+import EditCardScreen from './src/screens/EditCardScreen';
 
 const Stack = createStackNavigator();
 
@@ -12,7 +13,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Main"
+        initialRouteName="EditCard"
         screenOptions={{
           headerStyle: { backgroundColor: '#ffffff' },
           headerTitleStyle: { color: COLORS.GRAY_D001 },
@@ -25,6 +26,7 @@ export default function App() {
       >
         <Stack.Screen name="Main" component={MainScreen} />
         <Stack.Screen name="Confirm" component={ConfirmScreen} />
+        <Stack.Screen name="EditCard" component={EditCardScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

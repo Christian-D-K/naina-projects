@@ -1,6 +1,7 @@
 export const COLORS = {
   // Black
   BLACK_D001: '#000000',
+  BLACK_D002: '#353535',
   BLACK_L001: '#525252',
   BLACK_L002: '#232323',
 
