@@ -6,7 +6,7 @@ export const cardsData = [
       // icon: 0 image: 1
       type: '1',
       icon: '',
-      image: '../media/sample.jpg',
+      image: 'https://raw.githubusercontent.com/Christian-D-K/naina-projects/master/src/media/sample.jpg',
     },
     isProductHas: true,
     category: '調味料',
@@ -48,6 +48,216 @@ export const cardsData = [
   },
   {
     cardId: '00003',
+    cardTitle: 'ドッグフード',
+    background: {
+      type: '1',
+      icon: '',
+      image: '../media/sample-3.jpg',
+    },
+    isProductHas: true,
+    category: 'ペット用品',
+    option: {
+      description: '',
+      buyingLocations: [
+        'カインズ',
+      ],
+      isPrivate: true,
+      tags: [
+        '国産',
+      ],
+    },
+  },
+  {
+    cardId: '00004',
+    cardTitle: 'ドッグフード',
+    background: {
+      type: '1',
+      icon: '',
+      image: '../media/sample-3.jpg',
+    },
+    isProductHas: true,
+    category: 'ペット用品',
+    option: {
+      description: '',
+      buyingLocations: [
+        'カインズ',
+      ],
+      isPrivate: true,
+      tags: [
+        '国産',
+      ],
+    },
+  },
+  {
+    cardId: '00005',
+    cardTitle: 'ドッグフード',
+    background: {
+      type: '1',
+      icon: '',
+      image: '../media/sample-3.jpg',
+    },
+    isProductHas: true,
+    category: 'ペット用品',
+    option: {
+      description: '',
+      buyingLocations: [
+        'カインズ',
+      ],
+      isPrivate: true,
+      tags: [
+        '国産',
+      ],
+    },
+  },
+  {
+    cardId: '00006',
+    cardTitle: 'ドッグフード',
+    background: {
+      type: '1',
+      icon: '',
+      image: '../media/sample-3.jpg',
+    },
+    isProductHas: true,
+    category: 'ペット用品',
+    option: {
+      description: '',
+      buyingLocations: [
+        'カインズ',
+      ],
+      isPrivate: true,
+      tags: [
+        '国産',
+      ],
+    },
+  },
+  {
+    cardId: '00007',
+    cardTitle: 'ドッグフード',
+    background: {
+      type: '1',
+      icon: '',
+      image: '../media/sample-3.jpg',
+    },
+    isProductHas: true,
+    category: 'ペット用品',
+    option: {
+      description: '',
+      buyingLocations: [
+        'カインズ',
+      ],
+      isPrivate: true,
+      tags: [
+        '国産',
+      ],
+    },
+  },
+  {
+    cardId: '00008',
+    cardTitle: 'ドッグフード',
+    background: {
+      type: '1',
+      icon: '',
+      image: '../media/sample-3.jpg',
+    },
+    isProductHas: true,
+    category: 'ペット用品',
+    option: {
+      description: '',
+      buyingLocations: [
+        'カインズ',
+      ],
+      isPrivate: true,
+      tags: [
+        '国産',
+      ],
+    },
+  },
+  {
+    cardId: '00009',
+    cardTitle: 'ドッグフード',
+    background: {
+      type: '1',
+      icon: '',
+      image: '../media/sample-3.jpg',
+    },
+    isProductHas: true,
+    category: 'ペット用品',
+    option: {
+      description: '',
+      buyingLocations: [
+        'カインズ',
+      ],
+      isPrivate: true,
+      tags: [
+        '国産',
+      ],
+    },
+  },
+  {
+    cardId: '00010',
+    cardTitle: 'ドッグフード',
+    background: {
+      type: '1',
+      icon: '',
+      image: '../media/sample-3.jpg',
+    },
+    isProductHas: true,
+    category: 'ペット用品',
+    option: {
+      description: '',
+      buyingLocations: [
+        'カインズ',
+      ],
+      isPrivate: true,
+      tags: [
+        '国産',
+      ],
+    },
+  },
+  {
+    cardId: '00011',
+    cardTitle: 'ドッグフード',
+    background: {
+      type: '1',
+      icon: '',
+      image: '../media/sample-3.jpg',
+    },
+    isProductHas: true,
+    category: 'ペット用品',
+    option: {
+      description: '',
+      buyingLocations: [
+        'カインズ',
+      ],
+      isPrivate: true,
+      tags: [
+        '国産',
+      ],
+    },
+  },
+  {
+    cardId: '00012',
+    cardTitle: 'ドッグフード',
+    background: {
+      type: '1',
+      icon: '',
+      image: '../media/sample-3.jpg',
+    },
+    isProductHas: true,
+    category: 'ペット用品',
+    option: {
+      description: '',
+      buyingLocations: [
+        'カインズ',
+      ],
+      isPrivate: true,
+      tags: [
+        '国産',
+      ],
+    },
+  },
+  {
+    cardId: '00013',
     cardTitle: 'ドッグフード',
     background: {
       type: '1',

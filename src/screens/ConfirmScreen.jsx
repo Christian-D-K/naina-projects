@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 // constants
-import { TEXT_JP, RADIO_OPTIONS } from '../utils/consts';
+import { TEXT_JP, MAIN_RADIO_OPTIONS } from '../utils/consts';
 import { COLORS } from '../utils/colors';
 
 // components
@@ -50,7 +50,7 @@ export default function ConfirmScreen() {
           inputValue={inputDescriptionValue}
         />
         <RadioButton
-          radioOptions={RADIO_OPTIONS}
+          radioOptions={MAIN_RADIO_OPTIONS}
         />
         <Card
           cardTitle="醤油"

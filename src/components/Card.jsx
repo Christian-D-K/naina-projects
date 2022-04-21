@@ -25,7 +25,6 @@ export function Card(props) {
     cardId,
     checkHandler,
     checkCards,
-    background,
   } = props;
   const [isProductHasState, setIsProductHasState] = useState(isProductHas);
   const onPress = () => {
@@ -55,7 +54,7 @@ export function Card(props) {
         >
           <Image
             // eslint-disable-next-line global-require
-            source={{ uri: '' }}
+            source={{ uri: 'https://raw.githubusercontent.com/Christian-D-K/naina-projects/master/src/media/sample-2.jpg' }}
             style={[styles.image, styles.visualArea]}
           />
           <View
@@ -63,7 +62,7 @@ export function Card(props) {
               [
                 styles.cover,
                 styles.visualArea,
-                { backgroundColor: isProductHasState ? COLORS.BLACK_D001 : COLORS.RED_D003 },
+                { backgroundColor: isProductHasState ? COLORS.BLACK_D002 : COLORS.RED_D003 },
               ]
             }
           />
@@ -120,7 +119,6 @@ Card.propTypes = {
   checkHandler: func,
   cardId: string.isRequired,
   checkCards: arrayOf.isRequired,
-  background: string.isRequired,
 };
 
 Card.defaultProps = {

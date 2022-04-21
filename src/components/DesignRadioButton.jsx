@@ -1,0 +1,151 @@
+import React from 'react';
+import { number, func } from 'prop-types';
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
+import { COLORS } from '../utils/colors';
+import { Title } from './Title';
+
+const selection = [
+  {
+    id: 0,
+    design: 'carrot',
+  },
+  {
+    id: 1,
+    design: 'pump-soap',
+  },
+  {
+    id: 2,
+    design: 'toilet-paper',
+  },
+  {
+    id: 3,
+    design: 'baby',
+  },
+  {
+    id: 4,
+    design: 'pills',
+  },
+  {
+    id: 5,
+    design: 'spray-can',
+  },
+  {
+    id: 6,
+    design: 'dog',
+  },
+  {
+    id: 7,
+    design: 'shopping-cart',
+  },
+];
+
+export function DesignRadioButton(props) {
+  const { choicedDesign, setChoicedDesign } = props;
+
+  const renderItem = ({ item }) => {
+    const onPress = () => {
+      setChoicedDesign(item.id);
+    };
+
+    return (
+      <TouchableOpacity
+        style={
+          [
+            styles.selections,
+            { backgroundColor: choicedDesign === item.id ? COLORS.GRAY_D001 : COLORS.GRAY_M001 },
+          ]
+        }
+        onPress={onPress}
+        activeOpacity={1}
+      >
+        <Icon
+          name={item.design}
+          size={36}
+          color={choicedDesign === item.id ? COLORS.GRAY_L001 : COLORS.GRAY_D001}
+        />
+        {/* <Text>{choicedDesign}</Text> */}
+      </TouchableOpacity>
+    );
+  };
+
+  return (
+    <View style={styles.container}>
+      <Title
+        title="背景デザイン"
+      />
+      <View style={styles.designSelectBox}>
+        <FlatList
+          numColumns={4}
+          data={selection}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
+        <TouchableOpacity
+          style={styles.setImage}
+        >
+          <Text
+            style={styles.setImageText}
+          >
+            背景に画像を選択する
+          </Text>
+          <Icon
+            name="image"
+            size={40}
+            color={COLORS.GRAY_D002}
+          />
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    height: 176,
+  },
+  designSelectBox: {
+    // 要素の折り返し
+    alignSelf: 'center',
+    height: 200,
+    width: 320,
+  },
+  selections: {
+    marginHorizontal: 10,
+    marginTop: 4,
+    marginBottom: 6,
+    paddingVertical: 10,
+    height: 60,
+    width: 60,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  setImage: {
+    marginHorizontal: 10,
+    backgroundColor: COLORS.GRAY_M001,
+    height: 50,
+    width: 300,
+    borderRadius: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: COLORS.GRAY_M001,
+  },
+  setImageText: {
+    color: COLORS.GRAY_D001,
+    fontSize: 16,
+    marginHorizontal: 8,
+  },
+});
+
+DesignRadioButton.propTypes = {
+  setChoicedDesign: func.isRequired,
+  choicedDesign: number.isRequired,
+};
