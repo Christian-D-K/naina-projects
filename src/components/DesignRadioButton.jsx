@@ -50,6 +50,10 @@ const selection = [
 export function DesignRadioButton(props) {
   const { choicedDesign, setChoicedDesign } = props;
 
+  const onPressSetImage = () => {
+    setChoicedDesign(999);
+  };
+
   const renderItem = ({ item }) => {
     const onPress = () => {
       setChoicedDesign(item.id);
@@ -71,7 +75,6 @@ export function DesignRadioButton(props) {
           size={36}
           color={choicedDesign === item.id ? COLORS.GRAY_L001 : COLORS.GRAY_D001}
         />
-        {/* <Text>{choicedDesign}</Text> */}
       </TouchableOpacity>
     );
   };
@@ -89,17 +92,29 @@ export function DesignRadioButton(props) {
           keyExtractor={(item) => item.id}
         />
         <TouchableOpacity
-          style={styles.setImage}
+          style={
+            [
+              styles.setImage,
+              { backgroundColor: choicedDesign === 999 ? COLORS.GRAY_D001 : COLORS.GRAY_M001 },
+            ]
+          }
+          onPress={onPressSetImage}
+          activeOpacity={1}
         >
           <Text
-            style={styles.setImageText}
+            style={
+              [
+                styles.setImageText,
+                { color: choicedDesign === 999 ? COLORS.GRAY_L001 : COLORS.GRAY_D001 },
+              ]
+            }
           >
             背景に画像を選択する
           </Text>
           <Icon
             name="image"
             size={40}
-            color={COLORS.GRAY_D002}
+            color={choicedDesign === 999 ? COLORS.GRAY_L001 : COLORS.GRAY_D001}
           />
         </TouchableOpacity>
       </View>
@@ -109,12 +124,11 @@ export function DesignRadioButton(props) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 176,
+    flex: 1,
   },
   designSelectBox: {
     // 要素の折り返し
     alignSelf: 'center',
-    height: 200,
     width: 320,
   },
   selections: {
@@ -129,17 +143,16 @@ const styles = StyleSheet.create({
   },
   setImage: {
     marginHorizontal: 10,
-    backgroundColor: COLORS.GRAY_M001,
+    marginTop: 8,
     height: 50,
     width: 300,
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    color: COLORS.GRAY_M001,
   },
   setImageText: {
-    color: COLORS.GRAY_D001,
+
     fontSize: 16,
     marginHorizontal: 8,
   },

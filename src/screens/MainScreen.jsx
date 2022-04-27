@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Animated,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
 
 // constants
@@ -24,6 +25,7 @@ export default function MainScreen() {
   const turnUpDeleteButtonAnim = useRef(new Animated.Value(20)).current;
   const turnUpAddButtonOpasityAnim = useRef(new Animated.Value(0)).current;
   const turnUpDeleteButtonOpasityAnim = useRef(new Animated.Value(0)).current;
+  const navigation = useNavigation();
 
   useEffect(() => {
     turnUpDeleteButton();
@@ -76,6 +78,10 @@ export default function MainScreen() {
     // turnUpAddButton();
   };
 
+  const pushAddButton = () => {
+    navigation.navigate('EditCard');
+  };
+
   const onCheck = (cardId) => {
     if (checkCards.includes(cardId)) {
       setCheckCards(checkCards.filter((item) => item !== cardId));
@@ -85,7 +91,7 @@ export default function MainScreen() {
   };
 
   const pushDeleteButton = () => {
-    console.log(`delete ${checkCards}`);
+    // firebase test
   };
 
   const renderCards = ({ item }) => (
@@ -165,6 +171,7 @@ export default function MainScreen() {
         <CircleButton
           name="plus"
           designStyle={styles.circleButtonGreen}
+          onPress={pushAddButton}
         />
       </Animated.View>
     </View>

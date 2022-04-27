@@ -22,8 +22,7 @@ export function RadioButton(props) {
     Animated.spring(swithcRadioAnim, {
       toValue: Number(id) * optionWidth,
       speed: 20,
-      bounciness: 100,
-      duration: 100,
+      bounciness: 7,
       useNativeDriver: false,
     }).start();
   };
