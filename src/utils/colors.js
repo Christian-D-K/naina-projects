@@ -29,4 +29,5 @@ export const COLORS = {
   // Blue
   BLUE_L001: '#42A4FF',
   BLUE_L002: '#EBF5F8',
+  BLUE_L003: '#F0F7F9',
 };

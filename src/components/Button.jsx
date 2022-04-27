@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
   buttonCantainer: {
     backgroundColor: COLORS.GRAY_D001,
     borderRadius: 4,
-    alignSelf: 'flex-start',
     height: 40,
   },
   buttonLabel: {
