@@ -1,20 +1,13 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-// Import the functions you need from the SDKs you need
-import { initializeApp, getApps } from 'firebase/app';
 import ConfirmScreen from './src/screens/ConfirmScreen';
 import MainScreen from './src/screens/MainScreen';
-import { firebaseConfig } from './env';
 
 import { COLORS } from './src/utils/colors';
 import EditCardScreen from './src/screens/EditCardScreen';
 
 const Stack = createStackNavigator();
-// Initialize Firebase
-if (getApps().length === 0) {
-  initializeApp(firebaseConfig);
-}
 
 export default function App() {
   return (
