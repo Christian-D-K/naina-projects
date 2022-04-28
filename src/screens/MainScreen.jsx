@@ -91,7 +91,6 @@ export default function MainScreen() {
   };
 
   const pushDeleteButton = () => {
-    // firebase test
   };
 
   const renderCards = ({ item }) => (
