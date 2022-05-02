@@ -13,13 +13,16 @@ import {
 } from 'prop-types';
 import { Feather } from '@expo/vector-icons';
 
-import { COLORS } from '../utils/colors';
+import { COLORS } from '../../utils/colors';
 import { Title } from './Title';
 
 export function ExtentionSeparator(props) {
   const {
+    // コンポーネントで挟まれた要素が格納されている
     children,
+    // エリアが広がっているか否かを保持する
     isAreaSpreaded,
+    // エリアが広がっているか否かを保持するメソッド
     setIsAreaSpreaded,
     maxHeight,
   } = props;
@@ -42,6 +45,7 @@ export function ExtentionSeparator(props) {
       useNativeDriver: false,
     }).start();
 
+    // エリアを広げたり閉じたりする
     setIsAreaSpreaded(!isAreaSpreaded);
   };
 

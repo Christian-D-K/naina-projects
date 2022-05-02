@@ -6,8 +6,11 @@ import { Feather } from '@expo/vector-icons';
 
 export function CircleButton(props) {
   const {
+    // ボタンのデザインを設定するcss
     designStyle,
+    // ボタンの位置やレイアウトを設定するcss
     layoutStyle,
+    // iconの名前（アイコンの見た目が変わる）
     name,
     onPress,
   } = props;

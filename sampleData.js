@@ -1,4 +1,4 @@
-export const cardsData = [
+export const cardsDatas = [
   {
     cardId: '00001',
     cardTitle: '醤油',

@@ -9,9 +9,10 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import { COLORS } from '../utils/colors';
+import { COLORS } from '../../utils/colors';
 import { Title } from './Title';
 
+// ラジオボタンのラインナップ
 const selection = [
   {
     id: 0,
@@ -50,7 +51,9 @@ const selection = [
 export function DesignRadioButton(props) {
   const { choicedDesign, setChoicedDesign } = props;
 
+  // 画像を背景に設定する場合の処理
   const onPressSetImage = () => {
+    // idを999に設定
     setChoicedDesign(999);
   };
 

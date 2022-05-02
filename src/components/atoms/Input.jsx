@@ -13,7 +13,7 @@ import {
 } from 'prop-types';
 import { Ionicons } from '@expo/vector-icons';
 
-import { COLORS } from '../utils/colors';
+import { COLORS } from '../../utils/colors';
 
 export function Input(props) {
   const {

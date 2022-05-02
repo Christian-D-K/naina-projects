@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { string } from 'prop-types';
 
-import { COLORS } from '../utils/colors';
+import { COLORS } from '../../utils/colors';
 
 export function Title(props) {
   const { title } = props;

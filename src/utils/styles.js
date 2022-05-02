@@ -17,8 +17,8 @@ export const CardStyles = StyleSheet.create({
   visualArea: {
     height: 96,
     width: 162,
-    borderTopStartRadius: 4,
-    borderTopEndRadius: 4,
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4,
   },
   titleArea: {
     height: 48,

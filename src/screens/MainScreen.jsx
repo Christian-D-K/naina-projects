@@ -5,27 +5,64 @@ import {
   StyleSheet,
   Animated,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {
+  collection,
+  doc,
+  getDocs,
+  updateDoc,
+  deleteDoc,
+} from 'firebase/firestore';
+import { useNavigation, useIsFocused } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
+import { db, cardDocInfo } from '../plugin/firebase';
 
 // constants
 import { MAIN_RADIO_OPTIONS } from '../utils/consts';
 import { COLORS } from '../utils/colors';
-import { cardsData } from '../../sampleData';
 
 // components
-import { CircleButton } from '../components/CircleButton';
-import { RadioButton } from '../components/RadioButton';
-import { Card } from '../components/Card';
+import { CircleButton } from '../components/atoms/CircleButton';
+import { RadioButton } from '../components/atoms/RadioButton';
+import { Card } from '../components/atoms/Card';
 
 export default function MainScreen() {
-  const [isMainMode, setIsMainMode] = useState(true);
-  const [checkCards, setCheckCards] = useState([]);
+  // 画面遷移機能のインスタンス化
+  const navigation = useNavigation();
+  // 画面遷移したことを検知してリフレッシュする（ポップアップ系遷移にも有効）
+  const isForcused = useIsFocused();
+
   const turnUpAddButtonAnim = useRef(new Animated.Value(20)).current;
   const turnUpDeleteButtonAnim = useRef(new Animated.Value(20)).current;
   const turnUpAddButtonOpasityAnim = useRef(new Animated.Value(0)).current;
   const turnUpDeleteButtonOpasityAnim = useRef(new Animated.Value(0)).current;
-  const navigation = useNavigation();
+
+  // メイン(在庫管理)モード
+  const [isMainMode, setIsMainMode] = useState(true);
+  const [checkCards, setCheckCards] = useState([]);
+  const [cardsData, setCardsData] = useState([]);
+
+  const getUpToDateDoc = async () => {
+    const cardsDataTmp = [];
+    // get cards data
+    const snaps = await getDocs(collection(db, cardDocInfo));
+    cardsData.splice(0);
+    snaps.forEach((i) => {
+      cardsDataTmp.push(i.data());
+    });
+    setCardsData(cardsDataTmp);
+  };
+
+  // firebase function
+  useEffect(() => {
+    getUpToDateDoc();
+  }, [isForcused]);
+
+  const onPressCard = (cardId, isProductHas) => {
+    // update isProductHas
+    updateDoc(doc(db, cardDocInfo, cardId), {
+      isProductHas: !isProductHas,
+    });
+  };
 
   useEffect(() => {
     turnUpDeleteButton();
@@ -75,7 +112,6 @@ export default function MainScreen() {
 
   const pushEditButton = () => {
     setIsMainMode(!isMainMode);
-    // turnUpAddButton();
   };
 
   const pushAddButton = () => {
@@ -90,7 +126,16 @@ export default function MainScreen() {
     }
   };
 
-  const pushDeleteButton = () => {
+  const pushDeleteButton = async () => {
+    checkCards.forEach(async (i) => {
+      await deleteDoc(doc(db, cardDocInfo, i));
+    });
+    setCheckCards([]);
+    getUpToDateDoc();
+  };
+
+  const onChangeHandler = (choicedOption) => {
+    console.log(choicedOption);
   };
 
   const renderCards = ({ item }) => (
@@ -102,6 +147,7 @@ export default function MainScreen() {
       isMainMode={isMainMode}
       checkCards={checkCards}
       checkHandler={onCheck}
+      onPressHandler={onPressCard}
     />
   );
 
@@ -123,6 +169,7 @@ export default function MainScreen() {
           <RadioButton
             radioOptions={MAIN_RADIO_OPTIONS}
             initialOptionId="1"
+            onChange={onChangeHandler}
           />
         </View>
         <View

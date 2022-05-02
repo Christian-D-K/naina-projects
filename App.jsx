@@ -1,4 +1,5 @@
 import React from 'react';
+// Import the functions you need from the SDKs you need
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import ConfirmScreen from './src/screens/ConfirmScreen';

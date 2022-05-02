@@ -5,17 +5,19 @@ import {
   Text,
   Animated,
 } from 'react-native';
-import { arrayOf, string } from 'prop-types';
+import { arrayOf, string, func } from 'prop-types';
 import { FlatList } from 'react-native-gesture-handler';
 
-import { RaddioButtonStyles as styles } from '../utils/styles';
+import { RaddioButtonStyles as styles } from '../../utils/styles';
 
 export function RadioButton(props) {
-  const { radioOptions, initialOptionId } = props;
-  // Radio-options-size specifies automatic
+  const { radioOptions, initialOptionId, onChange } = props;
+  // ラジオボタンの横幅
   const containerWidth = 200;
+
+  // オプションを全てラジオボタン内に収めるために、オプション一つあたりのwidthを計算
   const optionWidth = containerWidth / radioOptions.length;
-  // const radioOptionsLength = radioOptions.length;
+
   const swithcRadioAnim = useRef(new Animated.Value(Number(initialOptionId) * optionWidth)).current;
 
   const switchRadioState = (id) => {
@@ -25,6 +27,9 @@ export function RadioButton(props) {
       bounciness: 7,
       useNativeDriver: false,
     }).start();
+
+    // ラジオボタンの選択オプション情報を親コンポーネントに渡す
+    onChange(id);
   };
 
   const renderOptions = ({ item }) => (
@@ -69,4 +74,5 @@ export function RadioButton(props) {
 RadioButton.propTypes = {
   radioOptions: arrayOf.isRequired,
   initialOptionId: string.isRequired,
+  onChange: func.isRequired,
 };

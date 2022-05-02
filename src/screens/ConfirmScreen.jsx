@@ -12,12 +12,12 @@ import { TEXT_JP, MAIN_RADIO_OPTIONS } from '../utils/consts';
 import { COLORS } from '../utils/colors';
 
 // components
-import { Button } from '../components/Button';
-import { CircleButton } from '../components/CircleButton';
-import { Input } from '../components/Input';
-import { Title } from '../components/Title';
-import { RadioButton } from '../components/RadioButton';
-import { Card } from '../components/Card';
+import { Button } from '../components/atoms/Button';
+import { CircleButton } from '../components/atoms/CircleButton';
+import { Input } from '../components/atoms/Input';
+import { Title } from '../components/atoms/Title';
+import { RadioButton } from '../components/atoms/RadioButton';
+import { Card } from '../components/atoms/Card';
 
 const pushButton = () => {
   Alert.alert('OK!');

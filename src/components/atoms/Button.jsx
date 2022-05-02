@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { func, string } from 'prop-types';
-import { COLORS } from '../utils/colors';
+import { COLORS } from '../../utils/colors';
 
 export function Button(props) {
   const { onPress, buttonText } = props;
@@ -12,13 +12,11 @@ export function Button(props) {
   );
 }
 
-// Define type of prop.
 Button.propTypes = {
   onPress: func,
   buttonText: string.isRequired,
 };
 
-// If you don't want to detarmine type of prop, you can set 'default-type'. Like a following!
 Button.defaultProps = {
   onPress: null,
 };
